@@ -1,12 +1,15 @@
 import React from 'react';
+import Search from './components/Search'
 import logo from './logo.svg';
 import './App.css';
+
+console.log(process.env.REACT_APP_OMDB_API_KEY)
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -17,7 +20,9 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
+        <h1>The Shoppies</h1>
+        <Search />
       </header>
     </div>
   );
