@@ -1,6 +1,5 @@
 import React from 'react';
 import Search from './components/Search'
-import logo from './logo.svg';
 import './App.css';
 
 console.log(process.env.REACT_APP_OMDB_API_KEY)
