@@ -25,14 +25,16 @@ const getMovies = (query, callback) => {
 
 const Search = (props) => {
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form onSubmit={(e) => e.preventDefault()} className="search-form">
       <label htmlFor="movie-title">Movie Title</label>
       <input
         id="movie-title"
+        className="form-control"
         placeholder="Search for..."
         value={props.query}
         onChange={(e) => props.handleInputChange(e, getMovies)}
       />
+      <span className="search-icon"></span>
     </form>
   );
 };

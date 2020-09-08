@@ -65,8 +65,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <header>
+      <div className="App">
+        <header className="">
           <h1>The Shoppies</h1>
           <Search
             handleSearch={this.handleSearch}
@@ -74,8 +74,8 @@ class App extends Component {
             query={this.state.query}
           />
         </header>
-        <div>
-          <section>
+        <div className="container">
+          <section className="list-container">
             {this.state.query.length > 0 ? (
               <MovieList
                 query={this.state.query}
@@ -84,17 +84,17 @@ class App extends Component {
                 nominations={this.state.nominations}
               />
             ) : (
-              <p>Results will show here</p>
+              <p className="m-0">Results will show here</p>
             )}
           </section>
-          <section>
+          <section className="list-container">
             {this.state.nominations.length > 0 ? (
               <NominationList
                 nominations={this.state.nominations}
                 handleNomination={this.handleNomination}
               />
             ) : (
-              <p>No nominations yet</p>
+              <p className="m-0">No nominations yet</p>
             )}
           </section>
         </div>

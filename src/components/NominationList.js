@@ -5,10 +5,12 @@ const NominationList = (props) => {
     <ul>
       {props.nominations.map((movie) => (
         <li key={movie.id}>
-          {movie.title} ({movie.year})
-          <button onClick={(e) => props.handleNomination(e, movie, "remove")}>
-            Remove
-          </button>
+          <span>
+            {movie.title} ({movie.year})
+            <button onClick={(e) => props.handleNomination(e, movie, "remove")}>
+              Remove
+            </button>
+          </span>
         </li>
       ))}
     </ul>
@@ -19,11 +21,6 @@ const NominationList = (props) => {
       {nominationDisplay}
     </>
   );
-};
-
-// Proptypes
-NominationList.prototype = {
-
 };
 
 export default NominationList;

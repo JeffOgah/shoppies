@@ -5,22 +5,24 @@ const MovieList = (props) => {
     <ul>
       {props.results.map((movie) => (
         <li key={movie.id}>
-          {movie.title} ({movie.year})
-          <button
-            onClick={(e) => props.handleNomination(e, movie, "add")}
-            disabled={
-              props.nominations.length > 0
-                ? props.nominations.some((element) => element.id === movie.id)
-                : false
-            }
-          >
-            Nominate
-          </button>
+          <span>
+            {movie.title} ({movie.year})
+            <button
+              onClick={(e) => props.handleNomination(e, movie, "add")}
+              disabled={
+                props.nominations.length > 0
+                  ? props.nominations.some((element) => element.id === movie.id)
+                  : false
+              }
+            >
+              Nominate
+            </button>
+          </span>
         </li>
       ))}
     </ul>
   ) : (
-    <p>{props.results}</p>
+    <p className="m-0">{props.results}</p>
   );
   return (
     <>
