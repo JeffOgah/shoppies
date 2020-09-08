@@ -19,6 +19,7 @@ const NominationList = (props) => {
     <>
       <strong>Nominations</strong>
       {nominationDisplay}
+  {props.nominations.length === 5 ? <strong>You have reached the maximum limit (5) gitfor nominations.</strong> : ""}
     </>
   );
 };
