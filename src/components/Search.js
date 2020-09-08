@@ -1,28 +1,40 @@
-import React, { Component } from 'react'
+import React from "react";
 
-class Search extends Component {
- state = {
-   query: '',
- }
+const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
+const API_URL = "http://www.omdbapi.com";
 
- handleInputChange = () => {
-   this.setState({
-     query: this.search.value
-   })
- }
+const getMovies = (query, callback) => {
+  let request = `${API_URL}/?apikey=${API_KEY}&s=${query
+    .split(" ")
+    .join("+")}&type=movie`;
+  fetch(request)
+    .then((res) => res.json())
+    .then(({ Search, Response, Error }) => {
+      let results;
+      if (Response === "False") {
+        results = Error;
+      }
+      if (Search) {
+        results = Search.map((movie) => {
+          return { id: movie.imdbID, title: movie.Title, year: movie.Year };
+        });
+      }
+      callback(results);
+    });
+};
 
- render() {
-   return (
-     <form>
-       <input
-         placeholder="Search for..."
-         ref={input => this.search = input}
-         onChange={this.handleInputChange}
-       />
-       <p>{this.state.query}</p>
-     </form>
-   )
- }
-}
+const Search = (props) => {
+  return (
+    <form onSubmit={(e) => e.preventDefault()}>
+      <label htmlFor="movie-title">Movie Title</label>
+      <input
+        id="movie-title"
+        placeholder="Search for..."
+        value={props.query}
+        onChange={(e) => props.handleInputChange(e, getMovies)}
+      />
+    </form>
+  );
+};
 
-export default Search
+export default Search;
