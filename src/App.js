@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-
 import Search from "./components/Search";
 import MovieList from "./components/MovieList";
 import NominationList from "./components/NominationList";
-
+import Popup from "./components/Popup";
 import "./App.css";
 
 class App extends Component {
@@ -13,11 +12,13 @@ class App extends Component {
       query: "",
       results: "",
       nominations: [],
+      popupIsOpen: false,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleNomination = this.handleNomination.bind(this);
+    this.togglePopup = this.togglePopup.bind(this);
   }
 
   componentDidMount() {
@@ -59,8 +60,15 @@ class App extends Component {
           "nominations",
           JSON.stringify(this.state.nominations)
         );
+        if (this.state.nominations.length === 5) {
+          this.togglePopup();
+        }
       }
     );
+  };
+
+  togglePopup = () => {
+    this.setState({ popupIsOpen: !this.state.popupIsOpen });
   };
 
   render() {
@@ -98,6 +106,16 @@ class App extends Component {
             )}
           </section>
         </div>
+        {this.state.popupIsOpen && (
+          <Popup
+            content={
+              <strong>
+                You have reached the maximum limit (5) for nominations.
+              </strong>
+            }
+            handleClose={this.togglePopup}
+          />
+        )}
       </div>
     );
   }

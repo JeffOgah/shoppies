@@ -12,9 +12,6 @@ li span {
   margin-bottom: 10px;
   list-style: circle;
 }
-/* li::before {
-  content:"•";
-} */
 button {
   border: none;
   height: 2em;
