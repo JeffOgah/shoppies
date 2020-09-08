@@ -23,10 +23,15 @@ button {
   background-color: #008060;
   color: #ffffff;
 }
-button:hover,
-button:disabled {
+button:hover {
   background-color: #004c3f;
   color: #ffffff;
+}
+
+button:disabled {
+  background-color: grey;
+  color: #ffffff;
+  cursor: not-allowed;
 }
 
 .App {
