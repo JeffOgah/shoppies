@@ -22,7 +22,7 @@ const MovieList = (props) => {
       ))}
     </ul>
   ) : (
-    <p className="m-0">{props.results}</p>
+    <p>{props.results}</p>
   );
   return (
     <>
