@@ -1,7 +1,7 @@
 import React from "react";
 
 const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
-const API_URL = "http://www.omdbapi.com";
+const API_URL = "https://www.omdbapi.com";
 
 const getMovies = (query, callback) => {
   let request = `${API_URL}/?apikey=${API_KEY}&s=${query
